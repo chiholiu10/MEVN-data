@@ -12,10 +12,9 @@ app.use(cors())
 const mongodb_conn_module = require('./mongodbConnModule');
 var db = mongodb_conn_module.connect();
 
-var Post = require("../models/post");
+var Data = require("../models/data");
 
 app.get('/', (req, res) => {
-	let data;
 	axios.get('https://gist.githubusercontent.com/hurkanakbiyik/5d54addf62f2c4a59c1e9222e3dc2d08/raw/f85c3ddb9b218515b88eb8f723fc05f257bed468/nerf-herders-test-data')
 		.then(response => {
 			res.json(response.data)
