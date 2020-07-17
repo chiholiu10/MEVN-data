@@ -1,11 +1,13 @@
 <template>
   <div class="posts">
-    ABN AMRO assignment
+    <ul v-for="(post, index) in posts.data" :key="index">
+      <li>{{ post.name }}</li>
+    </ul>
   </div>
 </template>
 
 <script>
-import PostsService from '@/services/PostsService'
+import axios from 'axios'
 export default {
   name: 'posts',
   data () {
@@ -15,11 +17,13 @@ export default {
   },
   mounted () {
     this.getPosts()
+    console.log('hello')
   },
   methods: {
     async getPosts () {
-      const response = await PostsService.fetchPosts()
-      this.posts = response.data.posts
+      axios.get('http://localhost:8085/').then(response => {
+        this.posts = response.data
+      })
     }
   }
 }
