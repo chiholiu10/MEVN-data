@@ -1,32 +1,26 @@
 # MEVN-boilerplate
 A fullstack boilerplate with Mongo, ExpressJS, VueJS and NodeJS.
 
-<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOOiKh1Xk5RDZFKPkVXYfi8U-t2cuotiAOR7G_7w_HWXfV02TMnd9wnVM" height="50" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://i.cloudup.com/zfY6lL7eFa-3000x3000.png" height="50" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/docs/Vue.js_Logo.svg.png" height="50" />  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Node.js_logo_2015.svg" height="50" /> 
+## Migration
 
-A skeleton generated with MEVN stack technologies which can be used as a boilerplate for anyone who is starting out. It contains a client template(**VueJS**) and a server template(**NodeJS**, **ExpressJS**) and a connection between them via an API layer.
+1. In Neo4j create a database and password plus username. 
+2. Please install POC https://neo4j.com/developer/neo4j-apoc/ plugin accordingly. 
+3. `NPM install`
+4. Go to `config.json` and then add bolt URL behind `url` also add `username and password`.
+5. In terminal just run `npm run migration`.
+6. After that you can run `node index`
+7. Just open de browser which is shown in the terminal by default this is `http://localhost:3000`
 
+## Backend 
+1. Open terminal 
+2. cd server
+3. mongod
+4. Open server (open new terminal, in the end you have three terminals running)
+5. cd server
+6. npm start
+7. Open `http://localhost:8080` in browser any other browser which is shown in terminal
 
-## Setup Development Machine
-1. Clone the repo `git clone git@github.com:anaida07/MEVN-boilerplate.git`
-
-2. `cd MEVN-boilerplate`
-
-3. Open client
-```
-cd client
-npm run dev
-```
-
-4. Open terminal 
-```
-cd server
-mongod
-```
-
-5. Open server (open new terminal, in the end you have three terminals running)
-```
-cd server
-npm start
-```
-
-6. Open `http://localhost:8080` in browser
+## Frontend 
+1. Open terminal
+2. cd client
+3. npm start
