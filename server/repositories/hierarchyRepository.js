@@ -1,6 +1,6 @@
 const neo4j = require('neo4j-driver');
 const config = require('../config.json');
-console.log('config' + config)
+
 module.exports.getAll = async () => {
     const driver = neo4j.driver(config.url, neo4j.auth.basic(config.user, config.pass));
     const session = driver.session();
