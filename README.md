@@ -3,7 +3,7 @@ A fullstack boilerplate with Mongo, ExpressJS, VueJS and NodeJS.
 
 ## Migration
 
-1. In Neo4j create a database and password plus username. 
+1. Download Neo4j Desktop, create a database and password plus username. 
 2. Please install POC https://neo4j.com/developer/neo4j-apoc/ plugin accordingly. 
 3. `NPM install`
 4. Go to `config.json` and then add bolt URL behind `url` also add `username and password`.
