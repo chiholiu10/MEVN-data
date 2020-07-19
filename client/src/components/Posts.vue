@@ -1,10 +1,28 @@
 <template>
   <div class="listData">
+    <h1>Front End Assignment</h1>
+
     <ul class="three">
-      <li v-for="(post, index) in listData.data" :key="index" :class="'line unordered-list ' + post.name.toLowerCase()">
+      <li 
+        v-for="(post, index) in listData.data" 
+        :key="index" 
+        :class="[
+            'list-item', 
+            'unordered-list ', 
+            post.name.toLowerCase(), 
+            { active: activeName == post.name }
+            ]"
+         @click="showInfo(post.name, post.description)">
         {{ post.name }}
       </li>
     </ul>
+
+    <div class="side-bar">
+      <span @click="deselectNode()">X</span>
+      <div>{{this.currentName}}</div>
+      <div>{{this.currentDescription}}</div>
+    </div>
+
   </div>
 </template>
 
@@ -14,7 +32,11 @@ export default {
   name: 'posts',
   data () {
     return {
-      listData: []
+      listData: [],
+      currentName: '',
+      active: null,
+      currentDescription: '',
+      activeName: ''
     }
   },
   mounted () {
@@ -25,10 +47,24 @@ export default {
       axios.get('http://localhost:8085/').then(response => {
         this.listData = response.data
       })
+    },
+    showInfo (name, description) {
+      this.currentName = name
+      this.currentDescription = description
+      this.activeNode(name)
+    },
+    deselectNode () {
+      this.currentName = ''
+      this.currentDescription = ''
+      this.activeName = ''
+    },
+    activeNode (name) {
+      this.activeName = name
     }
   }
 }
 </script>
+
 <style scoped>
 .three {
   display: grid;
@@ -126,10 +162,25 @@ export default {
   align-items: center;
 }
 
-.line {
+.list-item {
   border-top-left-radius: 5px;
   border-bottom-right-radius: 5px;
   width: 200px;
   position: relative;
+  border: 2px solid transparent;
+}
+
+.list-item.active {
+  border: 2px solid grey;
+}
+
+.side-bar {
+  width: 200px;
+  height: 100px;
+  padding: 20px;
+  position: absolute;
+  top: 0;
+  background-color: grey;
+  color: white;
 }
 </style>
