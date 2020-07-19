@@ -1,7 +1,6 @@
 <template>
   <div class="listData">
-    <h1>Front End Assignment</h1>
-
+    
     <ul class="three">
       <li 
         v-for="(post, index) in listData.data" 
