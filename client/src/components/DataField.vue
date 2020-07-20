@@ -1,26 +1,25 @@
 <template>
   <div class="listData">
     <ul class="three">
-      <li 
-        v-for="(post, index) in listData.data" 
-        :key="index" 
+      <li
+        v-for="(post, index) in listData.data"
+        :key="index"
         :class="[
+            'jest-test',
             'list-item', 
             'unordered-list ', 
             post.name.toLowerCase(), 
             { active: activeName == post.name }
             ]"
-         @click="showInfo(post.name, post.description)">
-        {{ post.name }}
-      </li>
+        @click="showInfo(post.name, post.description)"
+      >{{ post.name }}</li>
     </ul>
 
     <div class="side-bar">
-      <span @click="deselectNode()">X</span>
+      <span @click="deselectNode()" class="close-button">X</span>
       <div>{{this.currentName}}</div>
       <div>{{this.currentDescription}}</div>
     </div>
-
   </div>
 </template>
 
@@ -42,10 +41,13 @@ export default {
     this.getData()
   },
   methods: {
-    async getData () {
+    getData () {
       axios.get('http://localhost:8085/').then(response => {
-        this.listData = response.data
-      })
+          this.listData = response.data
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
     },
     showInfo (name, description) {
       this.currentName = name
@@ -65,6 +67,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$grey: grey;
+$white: white;
+$lightgrey: lightgrey;
+
 .listData {
   .three {
     display: grid;
@@ -117,7 +123,7 @@ export default {
       right: 0;
       transform: translateX(100%);
       display: block;
-      background: grey;
+      background: $grey;
       width: 45px;
       height: 3px;
     }
@@ -134,7 +140,7 @@ export default {
       position: absolute;
       left: 0;
       display: block;
-      background: grey;
+      background: $grey;
     }
   }
 
@@ -169,14 +175,14 @@ export default {
     position: relative;
     border: 2px solid transparent;
     &.unordered-list {
-      background-color: lightgreen;
+      background-color: $lightgrey;
       list-style-type: none;
       display: flex;
       justify-content: center;
       align-items: center;
     }
     &.active {
-      border: 2px solid grey;
+      border: 2px solid $grey;
     }
   }
 
@@ -186,8 +192,15 @@ export default {
     padding: 20px;
     position: absolute;
     top: 0;
-    background-color: grey;
-    color: white;
+    background-color: $grey;
+    color: $white;
+    .close-button {
+      float: right;
+      z-index: 9999;
+      &:hover {
+        cursor: pointer;
+      }
+    }
   }
 }
 </style>
