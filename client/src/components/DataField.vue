@@ -5,7 +5,6 @@
         v-for="(post, index) in listData.data"
         :key="index"
         :class="[
-            'jest-test',
             'list-item', 
             'unordered-list ', 
             post.name.toLowerCase(), 
@@ -27,7 +26,7 @@
 import axios from 'axios'
 
 export default {
-  name: 'listData',
+  name: 'DataField',
   data () {
     return {
       listData: [],
