@@ -23,4 +23,6 @@ A fullstack boilerplate with Mongo, ExpressJS, VueJS and NodeJS.
 ## Frontend 
 1. Open terminal
 2. cd client
-3. npm start
+3. npm start. To run the app. 
+4. npm run test. To test code. 
+5. npm run lint.  To check if there are errors. 
