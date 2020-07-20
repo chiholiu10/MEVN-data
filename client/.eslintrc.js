@@ -2,14 +2,17 @@ module.exports = {
   root: true,
   env: {
     node: true,
-    jest: true
+    jest: true,
   },
   parserOptions: {
-    parser: 'babel-eslint'
+    parser: 'babel-eslint',
   },
   extends: [
     'standard',
-    'plugin:vue/recommended'
+    "airbnb-base",
+    'plugin:vue/recommended',
+    "prettier",
+    "prettier/vue"
   ],
   rules: {
     // we should always disable console logs and debugging in production
